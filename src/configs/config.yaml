@@ -1,0 +1,33 @@
+extraction_strategy: "3x3"
+n_tiles: 32
+aggregation_method: "mean"
+labels_to_keep: [1,2]
+add_random_neg_labels: 0
+aois_test: ["UKR6", "UKR8", "UKR12", "UKR15"]
+features: "all"
+model_name: "random_forest"
+model_kwargs:
+  n_estimators: 100
+  n_jobs: 8
+train_cfg:
+  sliding_window: False # if True, slide from 2020-06 to 2022-06, else use month_pre and month_post
+  start_month_pre: "2020-10"
+  start_month_post: "2021-10"
+  remove_unknown_labels: True # Do not train on time-series for which label is unsure (ends between date of invasion and date of analysis)
+test_cfg:
+  sliding_window: False
+  start_month_pre: "2020-10"
+  start_month_post: "2021-10"
+  remove_unknown_labels: True
+aois_dense_preds: ["UKR6", "UKR1", "UKR8", "UKR12", "UKR15", 'UKR2']
+seed: 123
+run_name: ??? # Mandatory string argument that describes the run.
+use_wandb: true # Whether to log run in WandB
+
+hydra:
+  run:
+    dir: logs/${run_name}
+  sweep:
+    dir: logs/${run_name}
+  job_logging:
+    root: null # (prevent to automatically write a file .log)

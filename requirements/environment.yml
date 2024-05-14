@@ -1,0 +1,46 @@
+name: s1ts
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - scikit-learn-intelex
+  - geopandas=0.12.1
+  - earthengine-api
+  - rioxarray
+  - pyarrow
+  - dask
+  - netCDF4
+  - bottleneck
+  - seaborn
+  - contextily
+  - osmnx
+  - xagg==0.3.1.1
+  - pip
+  - pip:
+      - -r dev-requirements.txt
+      - geetools
+      - omegaconf
+      - hydra-core
+      - wandb
+      - geemap
+      - opencv-python
+      - tsfresh
+      - geedim
+      - h5py
+      - torch==2.0.1
+      - torchvision==0.15.2
+      - torchaudio==2.0ipy.1
+      - einops==0.7.0
+      - rasterstats==0.19.0
+      - ipygee==0.0.18
+      - PyDrive2==1.19.0
+      - ZDrive==2.1.5
+      - google-api-python-client==2.116.0
+      - google-auth-httplib2==0.2.0
+      - localtileserver==0.10.0
+      - xarray_leaflet==0.2.3
+      - openpyxl==3.1.2
+      - duckdb==0.10.0
+      - awscli==1.32.50
+      - jupysql==0.10.10
