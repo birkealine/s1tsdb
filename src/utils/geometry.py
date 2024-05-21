@@ -46,6 +46,15 @@ def load_ukraine_admin_polygons(adm_level=4):
     ukr_admin["admin_id"] = ukr_admin["admin_id"].apply(lambda x: f"{adm_level}_{x}")
     return ukr_admin
 
+def load_country_admin_polygons(adm_level=4, country = "Ukraine"):
+    assert adm_level in [1, 2, 3, 4]
+    cnt_admin_path = sorted((EXTERNAL_PATH / f"{country}_admin_boundaries").glob(f"*_adm{adm_level}*.shp"))[0]
+    columns = [f"ADM{i}_EN" for i in range(1, adm_level + 1)] + ["geometry"]
+    cnt_admin = gpd.read_file(cnt_admin_path)[columns]
+    cnt_admin.index.name = "admin_id"
+    cnt_admin.reset_index(inplace=True)
+    cnt_admin["admin_id"] = cnt_admin["admin_id"].apply(lambda x: f"{adm_level}_{x}")
+    return cnt_admin
 
 def reproject_geo(geo, current_crs, target_crs):
     """Reprojects a Shapely geometrz from the current CRS to a new CRS."""
