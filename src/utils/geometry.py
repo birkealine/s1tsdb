@@ -48,7 +48,7 @@ def load_ukraine_admin_polygons(adm_level=4):
 
 def load_country_admin_polygons(adm_level=4, country = "Ukraine"):
     assert adm_level in [1, 2, 3, 4]
-    cnt_admin_path = sorted((EXTERNAL_PATH / f"{country}_admin_boundaries").glob(f"*_adm{adm_level}*.shp"))[0]
+    cnt_admin_path = sorted((EXTERNAL_PATH / f"{country}_admin_boundaries").glob(f"*_adm{adm_level}*.shp"))[0] #TODO adapt name to acronym(?)
     columns = [f"ADM{i}_EN" for i in range(1, adm_level + 1)] + ["geometry"]
     cnt_admin = gpd.read_file(cnt_admin_path)[columns]
     cnt_admin.index.name = "admin_id"
