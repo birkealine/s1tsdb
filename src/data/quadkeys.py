@@ -131,7 +131,8 @@ def lgnlat_to_geo(lgnlat) -> Polygon:
 
 def create_quadkey_list(location="Ukraine"):
     """
-    Creates list of quadkeys (str) for specified country
+    Creates list of quadkeys (str) for specified country based on csv
+    i.e., INDEPENDENT OF DOWNLOADED MICROSOFT BUILDING FILES
     [function by birke]
     """
     dataset_links = pd.read_csv(
